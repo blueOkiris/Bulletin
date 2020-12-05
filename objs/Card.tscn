@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Card.gd" type="Script" id=1]
+[ext_resource path="res://fonts/ubuntu-font-family-0.83/ubuntu-font-family-0.83/Ubuntu-R.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ButtonTheme.tres" type="Theme" id=3]
+[ext_resource path="res://images/move.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Card" type="Panel"]
+margin_right = 384.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 384, 512 )
+rect_pivot_offset = Vector2( 192, 256 )
+mouse_default_cursor_shape = 6
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 379.0
+margin_bottom = 507.0
+custom_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 374.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Mover" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 44.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+texture = ExtResource( 4 )
+expand = true
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 48.0
+margin_right = 347.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+clear_button_enabled = true
+placeholder_text = "Enter Title Here..."
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 351.0
+margin_right = 373.0
+margin_bottom = 45.0
+theme = ExtResource( 3 )
+text = "X"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 374.0
+margin_bottom = 502.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="List" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 374.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="AddTextBox" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/List"]
+margin_right = 374.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/Mover" to="." method="_onMoverMouseEntered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/HBoxContainer/Mover" to="." method="_onMoverMouseExited"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_onCloseButtonPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/List/AddTextBox" to="." method="_onAddTextBoxPressed"]

@@ -1,0 +1,187 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/MainWindow.gd" type="Script" id=1]
+[ext_resource path="res://objs/CardGrid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ButtonTheme.tres" type="Theme" id=3]
+[ext_resource path="res://objs/SaveWarning.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objs/ErrorDialog.tscn" type="PackedScene" id=5]
+
+[node name="MainWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.341176, 0.32549, 0.4, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolBar" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 0
+
+[node name="Background" type="ColorRect" parent="VBoxContainer/ToolBar"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1275.0
+margin_bottom = 50.0
+color = Color( 0.121569, 0.105882, 0.172549, 1 )
+
+[node name="Buttons" type="MarginContainer" parent="VBoxContainer/ToolBar"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1275.0
+margin_bottom = 50.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ToolBar/Buttons"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1265.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+
+[node name="FileButton" type="MenuButton" parent="VBoxContainer/ToolBar/Buttons/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "File"
+flat = false
+expand_icon = true
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Save As", null, 0, false, false, 2, 0, null, "", false, "Open", null, 0, false, false, 3, 0, null, "", false ]
+
+[node name="LayoutButton" type="MenuButton" parent="VBoxContainer/ToolBar/Buttons/HBoxContainer"]
+margin_left = 113.0
+margin_right = 216.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "Layout"
+flat = false
+expand_icon = true
+items = [ "Add Column", null, 0, false, false, 0, 0, null, "", false, "Remove Last Column", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Add Row", null, 0, false, false, 3, 0, null, "", false, "Remove Last Row", null, 0, false, false, 4, 0, null, "", false ]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="VBoxContainer/ToolBar/Buttons/HBoxContainer"]
+margin_left = 226.0
+margin_right = 1260.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Body" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 55.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 0
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="Background" type="ColorRect" parent="VBoxContainer/Body"]
+margin_left = 5.0
+margin_right = 1275.0
+margin_bottom = 660.0
+color = Color( 0.121569, 0.105882, 0.172549, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Body"]
+margin_left = 5.0
+margin_right = 1275.0
+margin_bottom = 660.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="CardControl" type="CenterContainer" parent="VBoxContainer/Body/ScrollContainer"]
+
+[node name="CardGrid" parent="VBoxContainer/Body/ScrollContainer/CardControl" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -387.0
+margin_top = -268.0
+margin_right = 387.0
+margin_bottom = 268.0
+theme = ExtResource( 3 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.blt" )
+current_dir = "/"
+current_path = "/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -279.5
+margin_top = -167.5
+margin_right = 279.5
+margin_bottom = 167.5
+theme = ExtResource( 3 )
+resizable = true
+access = 2
+filters = PoolStringArray( "*.blt" )
+current_dir = "/"
+current_path = "/"
+
+[node name="SaveWarning" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -151.5
+margin_top = -46.0
+margin_right = 151.5
+margin_bottom = 46.0
+
+[node name="ErrorDialog" parent="." instance=ExtResource( 5 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -193.5
+margin_top = -64.5
+margin_right = 193.5
+margin_bottom = 64.5
+[connection signal="file_selected" from="OpenFileDialog" to="." method="_onOpenDialogFileSelected"]
+[connection signal="file_selected" from="SaveFileDialog" to="." method="_onSaveFileDialogFileSelected"]
+[connection signal="done" from="SaveWarning" to="." method="_onSaveWarningDone"]

@@ -1,0 +1,12 @@
+<grid num-cols='2' num-rows='2' >
+    <card col='0' row='0' title='Ex\s1' >
+<task index='0'> a </task>
+<task index='1'> b </task>
+<task index='2'> c </task>
+    </card>
+    <card col='1' row='1' title='Ex\s2' >
+<task index='0'> d </task>
+<task index='1'> e </task>
+<task index='2'> f </task>
+    </card>
+</grid>

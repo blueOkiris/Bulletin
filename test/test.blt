@@ -1,0 +1,11 @@
+<grid num-cols='10' num-rows='5'>
+    <card col='4' row='1' title='card example 1'>
+        <task index='1'> \sTask\s2 </task>
+        <task index='0'> Task\s1 </task>
+    </card>
+    <card col='6' row='1' title='card example 2'>
+        <task index='0'> Task\s1 </task>
+        <task index='1'> \sTask\s2 </task>
+    <card>
+</grid>
+
