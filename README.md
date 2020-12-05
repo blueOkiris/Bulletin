@@ -8,6 +8,10 @@ It misses many features of Trello like coloring and collaboration which may be i
 
 The big useful difference is that instead of horizontal cards, the cards in Bulletin are arranged on a configurable grid system that allows for arrangement control not seen in Trello.
 
+Example:
+
+![example](./docs/example.png)
+
 ## The Problem with Trello
 
 So I've been using the software Trello for a long while, and it's pretty useful, at least for my purposes.
