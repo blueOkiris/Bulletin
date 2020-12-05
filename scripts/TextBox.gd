@@ -42,6 +42,13 @@ func _process(_delta) -> void:
 					rect_global_position - get_global_mouse_position()
 		else:
 			rect_global_position = spacer.rect_global_position
+			var titleBoxBottom : int = \
+				card.titleBox.rect_global_position.y + card.titleBox.rect_size.y
+			var cardBottom : int = \
+				card.rect_global_position.y + card.rect_size.y
+			visible = \
+				rect_global_position.y >= titleBoxBottom - 5 \
+				&& rect_global_position.y <= cardBottom - 32
 		
 		rect_size = spacer.rect_size
 		_raiseListButton()
