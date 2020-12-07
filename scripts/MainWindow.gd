@@ -269,7 +269,7 @@ func _saveFile() -> void:
 			tasks.append([
 				child.spacerInd(),
 				child.line.text.replace('\\', '\\\\').replace(' ', '\\s'),
-				child.card.gridLocation.row, child.card.gridLocation.col 
+				child.card.gridLocation.col, child.card.gridLocation.row 
 			])
 		if child is Card:
 			cards.append([
